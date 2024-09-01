@@ -60,19 +60,28 @@ section {
   align-items: flex-start;
 }
 
+header{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+  gap: 20px;
+}
+
 .container_app {
   width: 100%;
-  min-height: 100%;
   max-width: 600px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   padding-inline: 20px;
-  padding-bottom: 12px;
+  padding-block: 20px 12px;
 }
 
 .container_chat {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;

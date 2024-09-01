@@ -45,7 +45,22 @@ function App() {
 
   return (
     <div className="container_app">
-      <h1>{channel}</h1>
+      {user && (
+        <header>
+          <h1>{channel}</h1>
+
+          <button
+            onClick={() => {
+              localStorage.removeItem("CHANNEL");
+              localStorage.removeItem("USER");
+              setUser(null);
+              setChannel(null);
+            }}
+          >
+            Out chat
+          </button>
+        </header>
+      )}
       {!user ? (
         <form onSubmit={handlerUserSubmit}>
           <label>
@@ -64,7 +79,8 @@ function App() {
                 key={id}
                 style={{
                   marginInline: messageUser.id == user.id ? "auto 0" : "0 auto",
-                  backgroundColor: messageUser.id == user.id? 'lightgreen': 'lightblue'
+                  backgroundColor:
+                    messageUser.id == user.id ? "lightgreen" : "lightblue",
                 }}
               >
                 <section>
@@ -83,7 +99,7 @@ function App() {
                 onChange={(e) => setMessage(e.target.value)}
               />
             </label>
-              <button>Send</button>
+            <button>Send</button>
           </form>
         </div>
       )}
