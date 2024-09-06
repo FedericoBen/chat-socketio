@@ -9,6 +9,13 @@ const io = new SocketServer(server);
 
 app.use(cors())
 
+io(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
 io.on("connection", (socket) => {
   console.log("client connected");
   socket.on("channels", (data) => {
