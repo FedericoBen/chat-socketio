@@ -5,16 +5,14 @@ import cors from "cors";
 
 const app = express();
 const server = http.createServer(app);
-const io = new SocketServer(server);
-
-app.use(cors());
-
-io(server, {
+const io = new SocketServer(server, {
   cors: {
     origin: "http://localhost:5173/",
     methods: ["GET", "POST"],
   },
 });
+
+app.use(cors());
 
 io.on("connection", (socket) => {
   console.log("client connected");
