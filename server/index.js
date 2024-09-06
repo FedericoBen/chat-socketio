@@ -9,7 +9,7 @@ const io = new SocketServer(server);
 
 app.use(cors());
 
-io(httpServer, {
+io(server, {
   cors: {
     origin: "http://localhost:5173/",
     methods: ["GET", "POST"],
