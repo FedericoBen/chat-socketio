@@ -1,19 +1,19 @@
 import express from "express";
 import http from "http";
 import { Server as SocketServer } from "socket.io";
-import cors from 'cors'
+import cors from "cors";
 
 const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server);
 
-app.use(cors())
+app.use(cors());
 
 io(httpServer, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
+    origin: "http://localhost:5173/",
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {
@@ -23,11 +23,10 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get('/',(req,res)=>{
-  console.log('Connected root base');
-  res.send('All')
-}
-)
+app.get("/", (req, res) => {
+  console.log("Connected root base");
+  res.send("All");
+});
 
 server.listen(4000, () => {
   console.log("server on port 4000");
