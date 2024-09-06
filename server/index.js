@@ -23,6 +23,12 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get('/',(req,res)=>{
+  console.log('Connected root base');
+  res.send('All')
+}
+)
+
 server.listen(4000, () => {
   console.log("server on port 4000");
 });
